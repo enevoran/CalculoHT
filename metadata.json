@@ -1,0 +1,5 @@
+{
+  "name": "Calculadora de Horas Semanales",
+  "description": "Calcula el total de horas trabajadas en la semana y el importe total a cobrar basado en una tarifa por hora.",
+  "requestFramePermissions": []
+}

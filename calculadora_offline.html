@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Calculadora de Horas</title>
+    <style>
+        /* Diseño simplificado y ultra-compatible */
+        body { font-family: -apple-system, sans-serif; background-color: #f2f2f7; margin: 0; padding: 15px; }
+        .card { background: white; border-radius: 12px; padding: 15px; max-width: 450px; margin: 0 auto; border: 1px solid #d1d1d6; }
+        h1 { text-align: center; font-size: 20px; color: #4f46e5; margin-top: 0; }
+        .section { margin-bottom: 15px; padding: 10px; background: #f8f9fa; border-radius: 10px; }
+        label { display: block; font-weight: bold; font-size: 12px; color: #666; margin-bottom: 5px; }
+        input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 16px; box-sizing: border-box; }
+        
+        .day-box { background: white; border: 1px solid #e5e5ea; border-radius: 10px; padding: 10px; margin-bottom: 10px; }
+        .day-title { font-weight: bold; margin-bottom: 8px; font-size: 14px; }
+        .row { display: flex; align-items: center; margin-bottom: 5px; }
+        .row label { width: 60px; margin: 0; }
+        .inputs { display: flex; align-items: center; gap: 5px; flex: 1; }
+        .small-input { width: 60px !important; text-align: center; }
+        
+        button { width: 100%; padding: 15px; border: none; border-radius: 10px; font-size: 16px; font-weight: bold; margin-top: 10px; }
+        .btn-blue { background: #4f46e5; color: white; }
+        .btn-gray { background: #e5e5ea; color: #333; }
+        
+        #res-box { margin-top: 15px; padding: 15px; background: #eef2ff; border-radius: 10px; display: none; text-align: center; border: 1px solid #4f46e5; }
+        .res-text { font-size: 18px; font-weight: bold; color: #4f46e5; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Calculadora de Horas</h1>
+        
+        <div class="section">
+            <label>PAGO POR HORA ($)</label>
+            <input type="number" id="rate" placeholder="0.00">
+        </div>
+
+        <div id="main-list">
+            <!-- Lunes -->
+            <div class="day-box">
+                <div class="day-title">Lunes</div>
+                <div class="row">
+                    <label>Entrada</label>
+                    <div class="inputs">
+                        <input type="number" id="eh0" class="small-input" placeholder="HH"> : 
+                        <input type="number" id="em0" class="small-input" placeholder="MM">
+                    </div>
+                </div>
+                <div class="row">
+                    <label>Salida</label>
+                    <div class="inputs">
+                        <input type="number" id="sh0" class="small-input" placeholder="HH"> : 
+                        <input type="number" id="sm0" class="small-input" placeholder="MM">
+                    </div>
+                </div>
+            </div>
+            <!-- Martes -->
+            <div class="day-box">
+                <div class="day-title">Martes</div>
+                <div class="row">
+                    <label>Entrada</label>
+                    <div class="inputs"><input type="number" id="eh1" class="small-input" placeholder="HH"> : <input type="number" id="em1" class="small-input" placeholder="MM"></div>
+                </div>
+                <div class="row">
+                    <label>Salida</label>
+                    <div class="inputs"><input type="number" id="sh1" class="small-input" placeholder="HH"> : <input type="number" id="sm1" class="small-input" placeholder="MM"></div>
+                </div>
+            </div>
+            <!-- Miércoles -->
+            <div class="day-box">
+                <div class="day-title">Miércoles</div>
+                <div class="row">
+                    <label>Entrada</label>
+                    <div class="inputs"><input type="number" id="eh2" class="small-input" placeholder="HH"> : <input type="number" id="em2" class="small-input" placeholder="MM"></div>
+                </div>
+                <div class="row">
+                    <label>Salida</label>
+                    <div class="inputs"><input type="number" id="sh2" class="small-input" placeholder="HH"> : <input type="number" id="sm2" class="small-input" placeholder="MM"></div>
+                </div>
+            </div>
+            <!-- Jueves -->
+            <div class="day-box">
+                <div class="day-title">Jueves</div>
+                <div class="row">
+                    <label>Entrada</label>
+                    <div class="inputs"><input type="number" id="eh3" class="small-input" placeholder="HH"> : <input type="number" id="em3" class="small-input" placeholder="MM"></div>
+                </div>
+                <div class="row">
+                    <label>Salida</label>
+                    <div class="inputs"><input type="number" id="sh3" class="small-input" placeholder="HH"> : <input type="number" id="sm3" class="small-input" placeholder="MM"></div>
+                </div>
+            </div>
+            <!-- Viernes -->
+            <div class="day-box">
+                <div class="day-title">Viernes</div>
+                <div class="row">
+                    <label>Entrada</label>
+                    <div class="inputs"><input type="number" id="eh4" class="small-input" placeholder="HH"> : <input type="number" id="em4" class="small-input" placeholder="MM"></div>
+                </div>
+                <div class="row">
+                    <label>Salida</label>
+                    <div class="inputs"><input type="number" id="sh4" class="small-input" placeholder="HH"> : <input type="number" id="sm4" class="small-input" placeholder="MM"></div>
+                </div>
+            </div>
+            <!-- Sábado -->
+            <div class="day-box">
+                <div class="day-title">Sábado</div>
+                <div class="row">
+                    <label>Entrada</label>
+                    <div class="inputs"><input type="number" id="eh5" class="small-input" placeholder="HH"> : <input type="number" id="em5" class="small-input" placeholder="MM"></div>
+                </div>
+                <div class="row">
+                    <label>Salida</label>
+                    <div class="inputs"><input type="number" id="sh5" class="small-input" placeholder="HH"> : <input type="number" id="sm5" class="small-input" placeholder="MM"></div>
+                </div>
+            </div>
+            <!-- Domingo -->
+            <div class="day-box">
+                <div class="day-title">Domingo</div>
+                <div class="row">
+                    <label>Entrada</label>
+                    <div class="inputs"><input type="number" id="eh6" class="small-input" placeholder="HH"> : <input type="number" id="em6" class="small-input" placeholder="MM"></div>
+                </div>
+                <div class="row">
+                    <label>Salida</label>
+                    <div class="inputs"><input type="number" id="sh6" class="small-input" placeholder="HH"> : <input type="number" id="sm6" class="small-input" placeholder="MM"></div>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn-blue" id="btnCalc">CALCULAR TOTAL</button>
+        <button class="btn-gray" id="btnClear">LIMPIAR TODO</button>
+
+        <div id="res-box">
+            <div style="margin-bottom:10px">Horas: <span id="out-h" class="res-text">0</span></div>
+            <div>Pago: <span id="out-p" class="res-text">$0.00</span></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('btnCalc').onclick = function() {
+            var totalMin = 0;
+            var hasValidEntry = false;
+            for (var i = 0; i < 7; i++) {
+                var eh = parseInt(document.getElementById('eh' + i).value, 10);
+                var em = parseInt(document.getElementById('em' + i).value, 10) || 0;
+                var sh = parseInt(document.getElementById('sh' + i).value, 10);
+                var sm = parseInt(document.getElementById('sm' + i).value, 10) || 0;
+
+                if (!isNaN(eh) && !isNaN(sh)) {
+                    hasValidEntry = true;
+                    var start = eh * 60 + em;
+                    var end = sh * 60 + sm;
+                    var diff = end - start;
+                    if (diff < 0) diff += 1440;
+                    totalMin += diff;
+                }
+            }
+
+            if (!hasValidEntry) {
+                alert('Por favor, ingresa al menos una hora de entrada y salida.');
+                return;
+            }
+
+            var totalHours = totalMin / 60;
+            var rate = parseFloat(document.getElementById('rate').value) || 0;
+            var totalPay = totalHours * rate;
+
+            document.getElementById('out-h').innerHTML = totalHours.toFixed(2) + " hrs";
+            document.getElementById('out-p').innerHTML = "$" + totalPay.toFixed(2);
+            document.getElementById('res-box').style.display = 'block';
+            
+            // Scroll manual simple
+            setTimeout(function() {
+                window.scrollTo(0, document.body.scrollHeight);
+            }, 100);
+        };
+
+        document.getElementById('btnClear').onclick = function() {
+            // Limpiar todos los inputs (incluyendo el de rate)
+            var inputs = document.getElementsByTagName('input');
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].value = '';
+            }
+            // Ocultar resultados
+            document.getElementById('res-box').style.display = 'none';
+            // Volver arriba
+            window.scrollTo(0, 0);
+        };
+    </script>
+</body>
+</html>
